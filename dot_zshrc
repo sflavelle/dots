@@ -38,6 +38,7 @@ export HISTFILE=$HOME/.zsh_history
 export SAVEHIST=1000000000
 
 # Variables
+export EDITOR=kak
 export IWADS=$HOME/Games/DOOM/IWADs
 export DOTSDIR=$HOME/Documents/Projects/dotfiles
 
