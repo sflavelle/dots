@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+final_space: true
+version: 2
+shell_integration: true
+blocks:
+
+  - type: prompt
+    alignment: left
+    segments:
+      - type: root
+        style: powerline
+        background: "#ff0000"
+        foreground: "#ffffff"
+        template: "󰦞"
+      - type: session
+        style: powerline
+        powerline_symbol: ""
+        foreground: "#ffffff"
+        background: "#c386f1"
+        template: "{{ if .SSHSession }} {{ end }}{{ .UserName }}{{ if .SSHSession }}@<#9977ff>{{ .HostName }}</>{{ end }}"
+      - type: path
+        style: powerline
+        powerline_symbol: ""
+        foreground: "#ffffff"
+        background: "#61AFEF"
+        properties:
+          style: unique
+          mapped_locations:
+              "~/Downloads": "󰉍"
+  - type: rprompt
+    alignment: right
+    segments:
+        - type: time
+          style: plain
+          properties:
+              time_format: "Jan-02-06 15:04:05"
+        - type: status
+          style: diamond
+          trailing_diamond: 
+          background: "#5555ff"
+          background_templates:
+            - "{{ if .Error }}#e91e63{{ end }}"
+          foreground: "#ffffff"
