@@ -1,0 +1,52 @@
+Watch Later: https://www.youtube.com/playlist?list=WL
+Driver667:
+  args: --shuffle
+  url: https://www.youtube.com/@driver667
+"Mindcrack: Trouble in Terrorist Town":
+  args: --shuffle
+  url: https://www.youtube.com/playlist?list=PLNiFIwkRDS3GrgvJOmDFW6q0tDqY-QEwO
+Odd Tinkering:
+  args: --shuffle
+  url: https://www.youtube.com/@OddTinkering
+"Broughy1322: FiveM Random All":
+  args: --shuffle
+  url: https://www.youtube.com/playlist?list=PLx_tHjuVuROBh9PSCGk4vgZl2o84GrsVM
+"Broughy1322: FiveM Random More":
+  args: --shuffle
+  url: https://www.youtube.com/playlist?list=PLx_tHjuVuROD9qny7Z_aRY27XUpWXzIQt
+SB Mowing: https://www.youtube.com/@SBMowing
+"Spikevegeta: Donkey Kong 64 Randomizer":
+    args: --ytdl-raw-options-append=playlist-reverse= --shuffle
+    url: https://www.youtube.com/playlist?list=PLXNs9JYgFz1tIHAg1Q46u8U9JQWhqKcXH
+Techmoan: https://www.youtube.com/@Techmoan
+The 8-Bit Guy: https://www.youtube.com/@The8BitGuy
+TronicsFix (Longs): https://www.youtube.com/@TronicsFixLongs
+DaThings:
+    args: --shuffle
+    url: https://www.youtube.com/@DaThings
+Technology Connections:
+  args: --shuffle
+  url: https://www.youtube.com/@TechnologyConnections
+ZFG (VOD): https://www.youtube.com/@ZFG_Vods
+A State of Trance: https://www.twitch.tv/asot
+RiffTrax: https://www.twitch.tv/rifftrax
+Games Done Quick (VOD):
+    args: --shuffle
+    url: https://www.youtube.com/@gamesdonequick
+Games Done Quick: https://www.twitch.tv/gamesdonequick
+ABC News: https://www.youtube.com/watch?v=vOTiJkg1voo
+FailRace: https://www.youtube.com/@FailRace
+Summoning Salt:
+  args: --shuffle
+  url: https://www.youtube.com/playlist?list=PLMxPYcr2zEkWInMyvvxmN22gjrRR0x__u
+The Detail Geek:
+    args: --shuffle
+    url: https://www.youtube.com/@TheDetailGeek
+"Game Grumps: Super Mario Sunshine": https://www.youtube.com/playlist?list=PLRQGRBgN_Enq2ZCxRmlhO0QGHqEFe7VnZ
+"Game Grumps: Super Mario 3D World": https://www.youtube.com/playlist?list=PLRQGRBgN_Enp3FYzx5p-npMulXkLm7bv2
+"Game Grumps: Kirby's+Grump's Dream Course":
+    args: --shuffle
+    url: https://www.youtube.com/playlist?list=PLgg349dsnmS2SwNX1mu5H9NVcQ9Nm5ivb
+"Game Grumps: Katamari Series":
+    args: --shuffle
+    url: https://www.youtube.com/playlist?list=PL14r1zR0h4TZ_rz-fpJR5dQIT8LugMTbt

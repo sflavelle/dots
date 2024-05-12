@@ -1,0 +1,45 @@
+#!/usr/bin/python
+import sys
+import yaml
+import os
+from sh import mpv
+import subprocess
+from pathlib import Path
+import pydymenu
+
+cfg = Path('~/.config/watch.yaml')
+choice = None
+choiceUrl = None
+
+with open(cfg.expanduser()) as f:
+    chan = dict(yaml.load(f, Loader=yaml.FullLoader))
+
+interactive = sys.stdout.isatty()
+
+if interactive:
+    choice = pydymenu.fzf(sorted(chan, reverse=True), prompt="Pick a playlist: ")
+else:
+    choice = pydymenu.rofi(sorted(chan), prompt="Pick a playlist: ")
+
+if choice == None:
+    print("Aborted.")
+    sys.exit(0)
+
+data = chan[choice[0]]
+if type(data) is str:
+    choiceUrl = data
+elif type(data) is dict:
+    choiceUrl = data['url']
+else:
+    print(f"Didn't plan for this. Returned type {type(data)}")
+
+applyArgs = data['args'] if (type(data) is dict and data['args'] is not None) else None
+
+execArgs = ['/usr/bin/mpv', '--force-window=immediate']
+if applyArgs is not None:
+    execArgs.extend(applyArgs.split())
+execArgs.extend([choiceUrl])
+
+print(f"Executing: {" ".join(execArgs)}")
+
+subprocess.Popen(execArgs, stdin=subprocess.DEVNULL, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL, start_new_session=True)
