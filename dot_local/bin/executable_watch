@@ -33,11 +33,15 @@ elif type(data) is dict:
 else:
     print(f"Didn't plan for this. Returned type {type(data)}")
 
-applyArgs = data['args'] if (type(data) is dict and data['args'] is not None) else None
+if type(data) is dict:
+    applyArgs = data['args'] if 'args' in data else None
+    shuffle = bool(data['shuffle']) if 'shuffle' in data else False
+    newestFirst = bool(data['newest_first']) if 'newest_first' in data else False
 
 execArgs = ['/usr/bin/mpv', '--force-window=immediate']
-if applyArgs is not None:
-    execArgs.extend(applyArgs.split())
+if applyArgs is not None: execArgs.extend(applyArgs.split())
+if shuffle: execArgs.extend(['--shuffle'])
+if newestFirst: execArgs.extend(['--ytdl-raw-options-append=playlist-reverse='])
 execArgs.extend([choiceUrl])
 
 print(f"Executing: {" ".join(execArgs)}")
