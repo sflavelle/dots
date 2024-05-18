@@ -1,0 +1,141 @@
+directory: /home/lily/Music
+library: /home/lily/Music/library.db
+
+pluginpath: /home/lily/.config/beets/otherplugins
+plugins:
+  - bandcamp
+  # - beatport
+  - discogs
+  # - vgmdb
+  - bucket
+  - convert
+  # - describe
+  - duplicates
+  - edit
+  - embedart
+  - fetchart
+  - info
+  - inline
+  - lastgenre
+  - lastimport
+  - mbsync
+  - mpdstats
+  - mpdupdate
+  - missing
+  - random
+  - replaygain
+  - the
+  - types
+  - playlist
+  - smartplaylist
+
+threaded: yes
+ui:
+  color: yes
+
+# asciify_paths: yes
+original_date: yes
+
+import:
+  languages: en jp
+  move: yes
+  write: yes
+  log: /home/lily/.config/beets/import.log
+
+importfeeds:
+  dir: /home/lily/Music/Imports
+  formats: m3u
+  m3u_name: importfeed.m3u
+  relative_to: /home/lily/Music/Imports
+
+paths:
+  default: %ifdef{collection,Collections/$collection/,Albums/}%the{$albumartist}/$album%aunique{} ($year)/$track $itemartist $title
+  singleton: %ifdef{collection,Collections/$collection/,Singles/}%the{$artist} - $title
+  albumtype:soundtrack: Soundtracks/$album%aunique{} ($albumartist, $year)/$track $itemartist $title
+  comp: Compilations/$album%aunique{} ($year)/$track $itemartist $title
+
+# Playlist Config
+
+playlist:
+  auto: yes
+  playlist_dir: /home/lily/Music/Playlists
+  relative_to: playlist
+
+smartplaylist:
+  playlist_dir: /home/lily/Music/Playlists/Auto
+  relative_to: /home/lily/Music/Playlists/Auto
+  playlists:
+    - name: Beets - Recently Added.m3u
+      query: 'added:-2w.. added-'
+      # All tracks added in the last 2 weeks, sorted by newest
+    - name: Beets - Soundtracks.m3u
+      album_query: 'albumtype:soundtrack album+'
+    - name: Beets - DJ Sets.m3u
+      query: 'tracktype:djset'
+    - name: Beets - Soundscapes.m3u
+      query: 'tracktype:soundscape'
+    - name: Labels - Cryo Chamber.m3u
+      query: 'label:"Cryo Chamber"'
+
+# Plugin Config
+
+types:
+  bpm: float
+  tracks: int
+  
+fetchart:
+  auto: yes
+  minwidth: 800
+  enforce_ratio: 8px
+  sources: filesystem coverart itunes *
+
+convert:
+  auto: yes
+  command: ffmpeg -i $source -y -vn -aq 2 $dest
+  extension: mp3
+
+the:
+  a: no
+
+bucket:
+  bucket_alpha: ['0-9', 'A-B', 'C-F', 'G-M', 'N-S', 'T-Z']
+
+bandcamp:
+  art: true
+  # split_artist_title: true
+
+item_fields:
+  itemartist: |
+    import re
+
+    ssMatch = re.search(r"\((.+)\)$", artist)
+    if albumartist != artist and albumartist == "Simon Says" and ssMatch is not None:
+      # If it's one of my mashups and I list the artists in the artist tag,
+      # Strip my name and just list the artists used as the 'track artist'
+      return '- ' + ssMatch.group()[1:-1] + ' -'
+    elif albumartist != artist:
+      # Otherwise, just list the artist if it's different from the album artist
+      return '- ' + artist + ' -'
+    else:
+      # Or nothing if the artist is the same as the album artist
+      return '-'
+
+album_fields:
+  tracks: len(items)
+
+
+importadded:
+  preserve_mtimes: yes
+
+lastfm:
+  user: Splatsune
+
+mpd:
+  port: 6600
+
+replaygain:
+  backend: gstreamer
+  auto: yes
+
+lyrics:
+  sources: genius *
