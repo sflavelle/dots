@@ -49,10 +49,10 @@ importfeeds:
   relative_to: /home/lily/Music/Imports
 
 paths:
-  default: %ifdef{collection,Collections/$collection/,Albums/}%the{$albumartist}/$album%aunique{} ($year)/$track $itemartist $title
+  default: %ifdef{collection,Collections/$collection/,Albums/}%the{$albumartist}/[$year] $album%aunique{}/$track $itemartist $title
   singleton: %ifdef{collection,Collections/$collection/,Singles/}%the{$artist} - $title
   albumtype:soundtrack: Soundtracks/$album%aunique{} ($albumartist, $year)/$track $itemartist $title
-  comp: Compilations/$album%aunique{} ($year)/$track $itemartist $title
+  comp: %ifdef{collection,Collections/$collection/,Compilations/}[$year] $album%aunique{}/$track $itemartist $title
 
 # Playlist Config
 
@@ -64,16 +64,18 @@ playlist:
 smartplaylist:
   playlist_dir: /home/lily/Music/Playlists/Auto
   relative_to: /home/lily/Music/Playlists/Auto
+  output: extm3u
+  fields:
+    - genre
+    - label
   playlists:
     - name: Beets - Recently Added.m3u
       query: 'added:-2w.. added-'
       # All tracks added in the last 2 weeks, sorted by newest
     - name: Beets - Soundtracks.m3u
       album_query: 'albumtype:soundtrack album+'
-    - name: Beets - DJ Sets.m3u
-      query: 'tracktype:djset'
-    - name: Beets - Soundscapes.m3u
-      query: 'tracktype:soundscape'
+    - name: Beets - $collection.m3u
+      query: 'collection::^.+$'
     - name: Labels - Cryo Chamber.m3u
       query: 'label:"Cryo Chamber"'
 
@@ -123,6 +125,10 @@ item_fields:
 album_fields:
   tracks: len(items)
 
+advancedrewrite:
+  - match: "label:'カバー株式会社'"
+    replacements:
+      collection: Hololive
 
 importadded:
   preserve_mtimes: yes
