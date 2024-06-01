@@ -64,7 +64,6 @@ playlist:
 smartplaylist:
   playlist_dir: /home/lily/Music/Playlists/Auto
   relative_to: /home/lily/Music/Playlists/Auto
-  output: extm3u
   fields:
     - genre
     - label

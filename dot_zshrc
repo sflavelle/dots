@@ -19,7 +19,7 @@ function beet-dlp() {
     yt-dlp -x --audio-format=mp3 \
     -o "%(album_artist,artist,uploader)s - %(album,playlist|Misc)s/%(playlist_index,track_number,autonumber)02d - %(title)s.%(ext)s" \
     --embed-metadata \
-    $1
+    $@
 
     beet import /tmp/beet-dlp
 
@@ -42,6 +42,7 @@ export SAVEHIST=1000000000
 export EDITOR=nvim
 export IWADS=$HOME/Games/DOOM/IWADs
 export DOTSDIR=$HOME/Documents/Projects/dotfiles
+export MPD_HOST=10.0.0.3
 
 # Aliases
 alias ls='eza --icons=auto'
