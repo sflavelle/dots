@@ -41,7 +41,7 @@ else:
 if type(data) is dict:
     applyArgs = data['args'] if 'args' in data else None
     shuffle = bool(data['shuffle']) if 'shuffle' in data else False
-    newestFirst = bool(data['newest_first']) if 'newest_first' in data else False
+    newestFirst = not bool(data['newest_first']) if 'newest_first' in data else False
 
 execArgs = ['/usr/bin/mpv', '--force-window=immediate']
 if applyArgs is not None: execArgs.extend(applyArgs.split())
