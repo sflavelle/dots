@@ -108,3 +108,6 @@ TASVideosChannels:
 LobosJr:
   url: https://www.youtube.com/@LobosjrGaming
   shuffle: true
+NileRed:
+  url: https://www.youtube.com/@NileRed
+  shuffle: true
