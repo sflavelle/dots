@@ -27,7 +27,7 @@ local o = {
 	key_increase_release = 'F6',
 	key_decrease_release = 'Shift+F6',
 
-	default_threshold = -25.0,
+	default_threshold = -12.0,
 	default_ratio = 3.0,
 	default_knee = 2.0,
 	default_makeup = 12.0,
