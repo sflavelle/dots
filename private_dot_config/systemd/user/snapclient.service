@@ -1,0 +1,7 @@
+[Unit]
+Description=Snapcast client daemon
+
+[Service]
+ExecStart=/usr/bin/snapclient --player=pulse
+[Install]
+WantedBy=default.target
