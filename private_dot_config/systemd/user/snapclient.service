@@ -1,5 +1,6 @@
 [Unit]
 Description=Snapcast client daemon
+After=pipewire-pulse.service
 
 [Service]
 ExecStart=/usr/bin/snapclient --player=pulse
