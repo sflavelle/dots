@@ -42,12 +42,14 @@ if type(data) is dict:
     applyArgs = data['args'] if 'args' in data else None
     shuffle = bool(data['shuffle']) if 'shuffle' in data else False
     newestFirst = not bool(data['newest_first']) if 'newest_first' in data else False
+    rememberPos = bool(data['remember_progress']) if 'remember_progress' in data else False
 
 execArgs = ['/usr/bin/mpv', '--force-window=immediate']
 if applyArgs is not None: execArgs.extend(applyArgs.split())
 if shuffle: execArgs.extend(['--shuffle'])
 if newestFirst: execArgs.extend(['--ytdl-raw-options-append=playlist-reverse='])
-execArgs.extend([choiceUrl])
+if rememberPos: execArgs.extend(['--save-position-on-quit'])
+execArgs.extend([data['url']])
 
 print(f"Executing: {" ".join(execArgs)}")
 

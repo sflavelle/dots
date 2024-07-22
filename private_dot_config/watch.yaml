@@ -83,17 +83,27 @@ Datsun 240Z Restoration: https://www.youtube.com/playlist?list=PLN0SuqPcbLqGvImG
 "Simpleflips: Trouble in Terrorist Town":
   url: https://www.youtube.com/playlist?list=PL3Hg1a3VjI1a2rlYY7HPZxWXv2r6rVn-v
   shuffle: true
-Wirtual (TV):
-  url: https://www.youtube.com/@WirtualTV
+WirtualTV (Streams):
+  url: https://www.youtube.com/@WirtualTV/streams
+  remember_progress: true
+  shuffle: true
+WirtualTV (Videos):
+  url: https://www.youtube.com/@WirtualTV/videos
   shuffle: true
 made from dreams:
   url: https://www.youtube.com/@madefromdream1
   shuffle: true
 "Hololive: Ceres Fauna":
   url: https://www.youtube.com/@CeresFauna/streams
+  remember_progress: true
   newest_first: true
 "Hololive: Nerissa Ravencroft":
   url: https://www.youtube.com/@NerissaRavencroft/streams
+  remember_progress: true
+  newest_first: true
+"Hololive: Ouro Kronii":
+  url: https://www.youtube.com/@OuroKronii/streams
+  remember_progress: true
   newest_first: true
 My Important Videos:
   url: https://www.youtube.com/playlist?list=PLNiFIwkRDS3F1x6iat9gd9wHqT6a379rD
@@ -107,6 +117,7 @@ TASVideosChannels:
   shuffle: true
 LobosJr:
   url: https://www.youtube.com/@LobosjrGaming
+  remember_progress: true
   shuffle: true
 NileRed:
   url: https://www.youtube.com/@NileRed
@@ -117,3 +128,30 @@ GranaDy:
 LockPickingLawyer:
   url: https://www.youtube.com/@lockpickinglawyer
   shuffle: true
+Metal Gear Scanlon:
+  url: https://www.youtube.com/playlist?list=PLXlhzeWIuTHLfGvMnnWLJK3DRLQwcTpwd
+  remember_progress: true
+"raocow: Paper Mario":
+  url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDLcny_XRHaxV9DpMdVMPab_
+  remember_progress: true
+"raocow: Super Mario Galaxy":
+  url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDKpx2i6rOgFM_RYJke6L8Li
+  remember_progress: true
+"raocow: Celeste":
+  url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDLuPoeFgmN_vWNIm74dhOJG
+  remember_progress: true
+"raocow: Half-Life 2 and Episodes":
+  url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDJZRQKT2j_s7Y3FPk6NdGDv
+  remember_progress: true
+"raocow: VIP 1 (2008)":
+  url: https://www.youtube.com/playlist?list=PLFC4CEB02276B5299
+  remember_progress: true
+"raocow: VIP 2 (2008)":
+  url: https://www.youtube.com/playlist?list=PL0D0280F96FE9F1FE
+  remember_progress: true
+"raocow: VIP 3 (2008)":
+  url: https://www.youtube.com/playlist?list=PL96E3A817DDADBA2C
+  remember_progress: true
+"raocow: VIP 4 (2009)":
+  url: https://www.youtube.com/playlist?list=PL0EA25AC172AC03E8
+  remember_progress: true
