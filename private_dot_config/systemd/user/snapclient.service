@@ -1,8 +1,16 @@
 [Unit]
 Description=Snapcast client daemon
-After=pipewire-pulse.service
+After=pipewire.service
+Wants=pipewire.service pipewire-pulse.service
+
+StartLimitIntervalSec=10
+StartLimitBurst=5
 
 [Service]
 ExecStart=/usr/bin/snapclient --player=pulse
+Restart=on-failure
+RestartSec=10
+
+
 [Install]
 WantedBy=default.target
