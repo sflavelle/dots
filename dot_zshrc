@@ -39,7 +39,7 @@ export HISTFILE=$HOME/.zsh_history
 export SAVEHIST=1000000000
 
 # Variables
-export EDITOR=nvim
+export EDITOR=helix
 export IWADS=$HOME/Games/DOOM/IWADs
 export DOTSDIR=$HOME/Documents/Projects/dotfiles
 export MPD_HOST=10.0.0.69
