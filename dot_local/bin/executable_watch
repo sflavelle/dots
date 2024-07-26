@@ -2,7 +2,6 @@
 import sys
 import yaml
 import os
-from sh import mpv
 import subprocess
 from pathlib import Path
 import pydymenu
@@ -29,6 +28,7 @@ if choice == None:
 applyArgs = None
 shuffle = False
 newestFirst = False
+isTermux = True if "TERMUX_VERSION" in os.environ else False
 
 data = chan[choice[0]]
 if type(data) is str:
@@ -45,12 +45,15 @@ if type(data) is dict:
     rememberPos = bool(data['remember_progress']) if 'remember_progress' in data else False
 
 execArgs = ['/usr/bin/mpv', '--force-window=immediate']
-if applyArgs is not None: execArgs.extend(applyArgs.split())
-if shuffle: execArgs.extend(['--shuffle'])
-if newestFirst: execArgs.extend(['--ytdl-raw-options-append=playlist-reverse='])
-if rememberPos: execArgs.extend(['--save-position-on-quit'])
-execArgs.extend([data['url']])
+if isTermux: execArgs = ['termux-open-url']
 
-print(f"Executing: {" ".join(execArgs)}")
+if not isTermux:
+    if applyArgs is not None: execArgs.extend(applyArgs.split())
+    if shuffle: execArgs.extend(['--shuffle'])
+    if newestFirst: execArgs.extend(['--ytdl-raw-options-append=playlist-reverse='])
+    if rememberPos: execArgs.extend(['--save-position-on-quit'])
+execArgs.extend([choiceUrl])
+
+print(f"Executing: {' '.join(execArgs)}")
 
 subprocess.Popen(execArgs, stdin=subprocess.DEVNULL, stderr=subprocess.DEVNULL, stdout=subprocess.DEVNULL, start_new_session=True)
