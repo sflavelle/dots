@@ -3,34 +3,49 @@ import sys
 import yaml
 import os
 import subprocess
+import argparse
 from pathlib import Path
 import pydymenu
+import random
+
+argParser = argparse.ArgumentParser(description='Select a stream or list of videos to watch.')
+argParser.add_argument('-r', '--random', dest='random', action='store_true', help='Pick a random selection for me')
+args = argParser.parse_args()
 
 cfg = Path('~/.config/watch.yaml')
 choice = None
 choiceUrl = None
-
-with open(cfg.expanduser()) as f:
-    chan = dict(yaml.load(f, Loader=yaml.FullLoader))
-
-interactive = sys.stdout.isatty()
-
-if interactive:
-    choice = pydymenu.fzf(sorted(chan, reverse=True), prompt="Pick a playlist: ")
-else:
-    choice = pydymenu.rofi(sorted(chan), prompt="Pick a playlist: ")
-
-if choice == None:
-    print("Aborted.")
-    sys.exit(0)
 
 # Init vars
 applyArgs = None
 shuffle = False
 newestFirst = False
 isTermux = True if "TERMUX_VERSION" in os.environ else False
+swRandom = args.random
 
-data = chan[choice[0]]
+with open(cfg.expanduser()) as f:
+    chan = dict(yaml.load(f, Loader=yaml.FullLoader))
+
+interactive = sys.stdout.isatty()
+
+if swRandom:
+    choice = random.choice(list(chan))
+else:
+    if interactive:
+        choice = pydymenu.fzf(sorted(chan, reverse=True), prompt="Pick a playlist: ")
+    else:
+        choice = pydymenu.rofi(sorted(chan), prompt="Pick a playlist: ")
+
+if choice == None:
+    print("Aborted.")
+    sys.exit(0)
+
+# Get choice key
+# print(f"{choice}, datatype {type(choice)}")
+if type(choice) is str: data = chan[choice]
+else: data = chan[choice[0]]
+
+# Process key
 if type(data) is str:
     choiceUrl = data
 elif type(data) is dict:
