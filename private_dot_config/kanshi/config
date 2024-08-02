@@ -1,0 +1,2 @@
+# include /etc/kanshi/config.d/*
+include ~/.config/kanshi/config.d/*
