@@ -26,7 +26,7 @@ function beet-dlp() {
     popd
 }
 
-mkcd() { mkdir $1 && cd $_ }
+mkcd() { mkdir -p $1 && cd $_ }
 
 # History config
 setopt INC_APPEND_HISTORY
@@ -43,6 +43,9 @@ export EDITOR=helix
 export IWADS=$HOME/Games/DOOM/IWADs
 export DOTSDIR=$HOME/Documents/Projects/dotfiles
 export MPD_HOST=10.0.0.69
+
+edit() { $EDITOR $1 }
+config() { $EDITOR $HOME/.config/$1 }
 
 # XDG Spec
 export XDG_CONFIG_HOME=$HOME/.config

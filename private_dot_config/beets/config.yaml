@@ -3,6 +3,7 @@ library: /home/lily/Music/library.db
 
 pluginpath: /home/lily/.config/beets/otherplugins
 plugins:
+  - albumtypes
   - bandcamp
   # - beatport
   - discogs
@@ -48,11 +49,20 @@ importfeeds:
   m3u_name: importfeed.m3u
   relative_to: /home/lily/Music/Imports
 
+albumtypes:
+  types:
+    - soundtrack: "OST"
+    - ep: 'EP'
+    - single: 'Single'
+    - live: 'Live'
+    - compilation: 'Anthology'
+    - remix: 'Remix'
+
 paths:
-  default: %ifdef{collection,Collections/$collection/,Albums/}%the{$albumartist}/[$year] $album%aunique{}/$track $itemartist $title
-  singleton: %ifdef{collection,Collections/$collection/,Singles/}%the{$artist} - $title
-  albumtype:soundtrack: Soundtracks/$album%aunique{} ($albumartist, $year)/$track $itemartist $title
-  comp: %ifdef{collection,Collections/$collection/,Compilations/}[$year] $album%aunique{}/$track $itemartist $title
+  default: '%ifdef{collection,Collections/$collection/,Albums/}%the{$albumartist}/[$year]$atypes $album%aunique{}/$track $itemartist $title'
+  singleton: '%ifdef{collection,Collections/$collection/,Singles/}%the{$artist} - $title'
+  albumtypes:soundtrack: Soundtracks/$album%aunique{} ($albumartist, $year)/$track $itemartist $title
+  comp: '%ifdef{collection,Collections/$collection/,Compilations/}[$year]$atypes $album%aunique{}/$track $itemartist $title'
 
 # Playlist Config
 
@@ -136,6 +146,7 @@ lastfm:
   user: Splatsune
 
 mpd:
+  host: 10.0.0.69
   port: 6600
 
 replaygain:
