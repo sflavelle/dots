@@ -2,7 +2,11 @@
 [
   {
     "name": "mainbar",
-    "output": "DP-2",
+    {{ if eq .chezmoi.hostname "rumbi" }}
+    "output": ["eDP-1"],
+    {{ else }}
+    "output": ["DP-2"],
+    {{ end }}
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
@@ -12,6 +16,8 @@
     "include": [
       "~/.config/waybar/defaults.jsonc",
     ],
+
+    {{ if eq .chezmoi.hostname "snatcher" }}
     "modules-left": [
       "river/tags",
       "river/mode",
@@ -35,10 +41,27 @@
       "tray",
       "custom/power"
     ]
+    {{ else if eq .chezmoi.hostname "rumbi" }}
+    "modules-left": [
+      "river/tags",
+      "river/mode",
+      "custom/weather"
+    ],
+    "modules-right": [
+      "pulseaudio",
+      "bluetooth",
+      "network",
+      "cpu",
+      "battery",
+      "clock",
+      "custom/notification",
+      "tray"
+    ]
+    {{ end }}
   },
   {
     "name": "secondarybar",
-    "output": "!DP-2",
+    "output": ["!DP-2", "!eDP-1"],
     "height": 30,
     "spacing": 2,
     "modules-left": [

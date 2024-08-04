@@ -258,7 +258,9 @@ class RiverConfig:
         # Refresh river
         self.river_map('Super+Shift', 'R', 'spawn', 'python3', '$HOME/.config/river/init')
 
-        
+        ####### INPUTS #######
+        touchpad = "pointer-0-0-Cypress_APA_Trackpad_(cyapa)"
+        self.river_ctl('input', touchpad, 'natural-scroll' 'enabled')
 
         ####### WINDOW MANAGEMENT #######
 

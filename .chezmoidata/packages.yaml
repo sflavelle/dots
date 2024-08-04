@@ -1,0 +1,11 @@
+packages:
+  arch:
+    pacman:
+      - sway
+      - kanshi
+      - thunar
+      - zsh
+      - mpv
+      - python
+    aur:
+      - swaysome
