@@ -1,0 +1,58 @@
+// -*- mode: jsonc -*-
+[
+  {
+    "name": "mainbar",
+    "output": "DP-2",
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "include": [
+      "~/.config/waybar/defaults.jsonc",
+    ],
+    "modules-left": [
+      "river/tags",
+      "river/mode",
+      "sway/scratchpad",
+      "custom/weather"
+    ],
+    "modules-center": [
+      "river/window"
+    ],
+    "modules-right": [
+      "mpd",
+      "idle_inhibitor",
+      "pulseaudio",
+      "bluetooth",
+      "network",
+      "cpu",
+      "memory",
+      "keyboard-state",
+      "clock",
+      "custom/notification",
+      "tray",
+      "custom/power"
+    ]
+  },
+  {
+    "name": "secondarybar",
+    "output": "!DP-2",
+    "height": 30,
+    "spacing": 2,
+    "modules-left": [
+      "river/tags",
+      "river/mode",
+      "sway/scratchpad"
+    ],
+    "modules-center": [
+      "river/window"
+    ],
+    "modules-right": [
+      "mpd",
+      "idle_inhibitor",
+      "clock"
+    ]
+  }
+]
