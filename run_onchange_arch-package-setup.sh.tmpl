@@ -2,8 +2,4 @@
 
 sudo pacman -Syu
 
-sudo pacman -S <<EOF
-{{ range .packages.arch.pacman -}}
-{{ . }}
-{{ end -}}
-EOF
+sudo pacman -S {{ range .packages.arch.pacman -}}{{ . }} {{ end -}}

@@ -258,6 +258,11 @@ class RiverConfig:
         # Refresh river
         self.river_map('Super+Shift', 'R', 'spawn', 'python3', '$HOME/.config/river/init')
 
+        # Print Screens
+        self.river_map('None', 'PrintScreen', 'spawn', 'grim', '-o', 'DP-2') # Main screen
+        self.river_map('Alt', 'PrintScreen', 'spawn', 'grim') # All screens
+        self.river_map('Shift', 'PrintScreen', 'spawn', 'grim', '-g' '$(slurp)') # Selection
+
         ####### INPUTS #######
         touchpad = "pointer-0-0-Cypress_APA_Trackpad_(cyapa)"
         self.river_ctl('input', touchpad, 'natural-scroll' 'enabled')

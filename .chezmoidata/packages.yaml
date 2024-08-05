@@ -1,7 +1,8 @@
 packages:
   arch:
     pacman:
-      - sway
+      - river
+      - waybar
       - kanshi
       - thunar
       - zsh
