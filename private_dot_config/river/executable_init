@@ -108,7 +108,7 @@ def registry_handle_global(registry, id, interface, version):
 
 class RiverConfig:
     def __init__(self):
-        self.layout = 'rivertile'
+        self.layout = 'wideriver'
         self.display = Display()
         self.display.connect()
 
@@ -220,7 +220,9 @@ class RiverConfig:
         tospawn = [
             # Accessories
             "swaync",
-            "waybar",
+#            "waybar",
+            "$HOME/.config/river/status",
+            "$HOME/.config/river/bar",
             "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XAUTHORITY",
             "sway-audio-idle-inhibit",
             "kanshi",
@@ -249,6 +251,7 @@ class RiverConfig:
         self.river_map('Super', 'T', 'spawn', PREF.terminal)
         self.river_map('Super', 'E', 'spawn', PREF.filemanager)
         self.river_map('Super', 'B', 'spawn', PREF.browser)
+        self.river_map('None', 'F13', 'spawn', 'pavucontrol')
         
         # Close the focused view
         self.river_map('Super', 'Q', 'close' )
@@ -259,13 +262,18 @@ class RiverConfig:
         self.river_map('Super+Shift', 'R', 'spawn', 'python3', '$HOME/.config/river/init')
 
         # Print Screens
-        self.river_map('None', 'PrintScreen', 'spawn', 'grim', '-o', 'DP-2') # Main screen
-        self.river_map('Alt', 'PrintScreen', 'spawn', 'grim') # All screens
-        self.river_map('Shift', 'PrintScreen', 'spawn', 'grim', '-g' '$(slurp)') # Selection
+        self.river_map('None', 'Print', 'spawn', 'grim', '-o', 'DP-2') # Main screen
+        self.river_map('Alt', 'Print', 'spawn', 'grim') # All screens
+        self.river_map('Shift', 'Print', 'spawn', 'grim', '-g' '$(slurp)') # Selection
+
+        # Volume Control
+        self.river_map('None', 'XF86AudioLowerVolume', 'spawn', 'pactl', 'set-sink-volume', '@DEFAULT_SINK@', '-5%')
+        self.river_map('None', 'XF86AudioRaiseVolume', 'spawn', 'pactl', 'set-sink-volume', '@DEFAULT_SINK@', '+5%')
+        self.river_map('None', 'XF86AudioMute', 'spawn', 'pactl', 'set-sink-mute', '@DEFAULT_SINK@', 'toggle')
 
         ####### INPUTS #######
         touchpad = "pointer-0-0-Cypress_APA_Trackpad_(cyapa)"
-        self.river_ctl('input', touchpad, 'natural-scroll' 'enabled')
+        self.river_ctl('input', touchpad, 'natural-scroll', 'enabled')
 
         ####### WINDOW MANAGEMENT #######
 
@@ -318,12 +326,19 @@ class RiverConfig:
         self.river_map('Super', 'F11', 'enter-mode', 'normal', mode='passthrough')
 
         # Lockscreen
-        self.river_map('Super+Control', 't', 'spawn', 'swaylock')
+        self.river_map('Super+Control', 'L', 'spawn', 'swaylock')
 
         # Layout generator
         self.river_ctl('default-layout', self.layout)
         self.layout_cmd('Super', 'bracketleft', 'main-ratio -0.01', map_arg='-repeat')
         self.layout_cmd('Super', 'bracketright', 'main-ratio +0.01', map_arg='-repeat')
+        self.layout_cmd('Super+Alt', 'F', '--layout monocle')
+        self.layout_cmd('Super+Alt', 'Tab', '--layout-toggle')
+        self.layout_cmd('Super+Alt', 'W', '--layout top')
+        self.layout_cmd('Super+Alt', 'A', '--layout left')
+        self.layout_cmd('Super+Alt', 'S', '--layout bottom')
+        self.layout_cmd('Super+Alt', 'D', '--layout right')
+        self.layout_cmd('Super+Alt', 'Q', '--layout wide')
 
         ###### WINDOW RULES ######
         # Vesktop
