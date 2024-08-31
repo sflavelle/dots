@@ -60,7 +60,7 @@ albumtypes:
 
 paths:
   default: '%ifdef{collection,Collections/$collection/,Albums/}%the{$albumartist}/[$year]$atypes $album%aunique{}/$track $itemartist $title'
-  singleton: '%ifdef{collection,Collections/$collection/,Singles/}%the{$artist} - $title'
+  singleton: '%ifdef{collection,Collections/$collection/,Singles/}%the{$artist}/[$year] $title'
   albumtypes:soundtrack: Soundtracks/$album%aunique{} ($albumartist, $year)/$track $itemartist $title
   comp: '%ifdef{collection,Collections/$collection/,Compilations/}[$year]$atypes $album%aunique{}/$track $itemartist $title'
 

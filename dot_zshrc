@@ -2,6 +2,8 @@ typeset -U path PATH
 path=(~/.local/bin ~/.cargo/bin $path)
 export PATH
 
+export UID=$(id -u)
+
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
@@ -14,14 +16,14 @@ eval "$(zoxide init --cmd cd zsh)"
 (cat ~/.cache/wal/sequences &)
 
 function beet-dlp() {
-    mkdir -p /tmp/beet-dlp
-    pushd /tmp/beet-dlp
+    mkdir -p /tmp/beet-dlp-$UID
+    pushd /tmp/beet-dlp-$UID
     yt-dlp -x --audio-format=mp3 \
     -o "%(album_artist,artist,uploader)s - %(album,playlist|Misc)s/%(playlist_index,track_number,autonumber)02d - %(title)s.%(ext)s" \
     --embed-metadata \
     $@
 
-    beet import /tmp/beet-dlp
+    beet import /tmp/beet-dlp-$UID
 
     popd
 }
