@@ -13,7 +13,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /etc/profile
 eval "$(oh-my-posh init zsh --config ~/.config/posh.yaml)"
 eval "$(zoxide init --cmd cd zsh)"
-(cat ~/.cache/wal/sequences &)
 
 function beet-dlp() {
     mkdir -p /tmp/beet-dlp-$UID
