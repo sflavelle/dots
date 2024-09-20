@@ -10,6 +10,9 @@ import random
 
 argParser = argparse.ArgumentParser(description='Select a stream or list of videos to watch.')
 argParser.add_argument('-r', '--random', dest='random', action='store_true', help='Pick a random selection for me')
+argParser.add_argument('--recent', action='store_true', help="Always play in reverse chronological order")
+argParser.add_argument('--shuffle', action='store_true', help="Always shuffle")
+
 args = argParser.parse_args()
 
 cfg = Path('~/.config/watch.yaml')
@@ -18,10 +21,14 @@ choiceUrl = None
 
 # Init vars
 applyArgs = None
-shuffle = False
-newestFirst = False
+shuffle = args.shuffle or False
+newestFirst = args.recent or False
 isTermux = True if "TERMUX_VERSION" in os.environ else False
 swRandom = args.random
+
+if args.shuffle and args.recent:
+    print("Don't specify --recent and --shuffle at the same time.")
+    sys.exit(1)
 
 with open(cfg.expanduser()) as f:
     chan = dict(yaml.load(f, Loader=yaml.FullLoader))
@@ -55,9 +62,13 @@ else:
 
 if type(data) is dict:
     applyArgs = data['args'] if 'args' in data else None
-    shuffle = bool(data['shuffle']) if 'shuffle' in data else False
-    newestFirst = not bool(data['newest_first']) if 'newest_first' in data else False
+    shuffle = True if args.shuffle else bool(data['shuffle']) if 'shuffle' in data else False
+    newestFirst = True if args.recent else not bool(data['newest_first']) if 'newest_first' in data else False
     rememberPos = bool(data['remember_progress']) if 'remember_progress' in data else False
+
+    # Explicitly disable shuffle/recent if the other is set
+    if args.recent: shuffle = False
+    if args.shuffle: newestFirst = False
 
 execArgs = ['/usr/bin/mpv', '--force-window=immediate']
 if isTermux: execArgs = ['termux-open-url']
