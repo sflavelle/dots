@@ -29,6 +29,7 @@ plugins:
   - types
   - playlist
   - smartplaylist
+#  - cue_file
 
 threaded: yes
 ui:
@@ -60,7 +61,7 @@ albumtypes:
 
 paths:
   default: '%ifdef{collection,Collections/$collection/,Albums/}%the{$albumartist}/[$year]$atypes $album%aunique{}/$track $itemartist $title'
-  singleton: '%ifdef{collection,Collections/$collection/,Singles/}%the{$artist}/[$year] $title'
+  singleton: '%ifdef{collection,Collections/$collection/,Singles/}%the{$sfirstartist}/[$year] $artist - $title'
   albumtypes:soundtrack: Soundtracks/$album%aunique{} ($albumartist, $year)/$track $itemartist $title
   comp: '%ifdef{collection,Collections/$collection/,Compilations/}[$year]$atypes $album%aunique{}/$track $itemartist $title'
 
@@ -116,6 +117,8 @@ bandcamp:
   # split_artist_title: true
 
 item_fields:
+  sfirstartist: return artists[0] if artists else artist
+  afirstartist: return albumartists.split("␀")[0] if albumartists else albumartist
   itemartist: |
     import re
 

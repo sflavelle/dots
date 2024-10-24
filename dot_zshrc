@@ -13,14 +13,18 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /etc/profile
 eval "$(oh-my-posh init zsh --config ~/.config/posh.yaml)"
 eval "$(zoxide init --cmd cd zsh)"
+[[ ! -r '/home/lily/.opam/opam-init/init.zsh' ]] || source '/home/lily/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 
 function beet-dlp() {
     mkdir -p /tmp/beet-dlp-$UID
     pushd /tmp/beet-dlp-$UID
+	for item in $@
+	do
     yt-dlp -x --audio-format=mp3 \
     -o "%(album_artist,artist,uploader)s - %(album,playlist|Misc)s/%(playlist_index,track_number,autonumber)02d - %(title)s.%(ext)s" \
     --embed-metadata \
-    $@
+    $item
+	done
 
     beet import /tmp/beet-dlp-$UID
 
