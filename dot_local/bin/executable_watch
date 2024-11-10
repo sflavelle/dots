@@ -73,7 +73,7 @@ if type(data) is dict:
 execArgs = ['/usr/bin/mpv', '--force-window=immediate']
 if isTermux: execArgs = ['termux-open-url']
 
-if not isTermux:
+if not isTermux and type(data) is dict:
     if applyArgs is not None: execArgs.extend(applyArgs.split())
     if shuffle: execArgs.extend(['--shuffle'])
     if newestFirst: execArgs.extend(['--ytdl-raw-options-append=playlist-reverse='])
