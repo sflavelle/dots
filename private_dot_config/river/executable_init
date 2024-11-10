@@ -105,7 +105,6 @@ def registry_handle_global(registry, id, interface, version):
             SEAT.wl_seat = registry.bind(id, WlSeat, version)
 
 
-
 class RiverConfig:
     def __init__(self):
         self.layout = 'wideriver'
@@ -345,7 +344,7 @@ class RiverConfig:
 
         ###### WINDOW RULES ######
         self.river_ctl('rule-add', '-app-id', 'mpv', 'output', 'Microstep MSI G24C6 0x00000243')
-        self.riverctl('rule-add', '-title', 'Vesktop', 'output', 'Microstep MSI MAG161V AA1H010800607')
+        self.river_ctl('rule-add', '-title', 'Vesktop', 'output', 'Microstep MSI MAG161V AA1H010800607')
 
 
 if __name__ == '__main__':
