@@ -226,7 +226,7 @@ class RiverConfig:
             "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XAUTHORITY",
             "sway-audio-idle-inhibit",
             "kanshi",
-            "sleep 2 && waypaper-engine run",
+            "swaybg -m fill -i '$(find ~/Pictures/Wallpapers -iname \*.png -not -iname \.* | shuf -n 1)'",
             # Programs
             "vesktop",
             "steam",
@@ -267,9 +267,12 @@ class RiverConfig:
         self.river_map('Shift', 'Print', 'spawn', 'grim', '-g' '$(slurp)') # Selection
 
         # Volume Control
+        self.river_map('None', 'F13', 'spawn', 'audio-select', 'select-sink')
         self.river_map('None', 'XF86AudioLowerVolume', 'spawn', 'pactl', 'set-sink-volume', '@DEFAULT_SINK@', '-5%')
         self.river_map('None', 'XF86AudioRaiseVolume', 'spawn', 'pactl', 'set-sink-volume', '@DEFAULT_SINK@', '+5%')
         self.river_map('None', 'XF86AudioMute', 'spawn', 'pactl', 'set-sink-mute', '@DEFAULT_SINK@', 'toggle')
+        self.river_map('Shift', 'F13', 'spawn', 'audio-select', 'select-source')
+        
 
         ####### INPUTS #######
         touchpad = "pointer-0-0-Cypress_APA_Trackpad_(cyapa)"
@@ -341,8 +344,8 @@ class RiverConfig:
         self.layout_cmd('Super+Alt', 'Q', '--layout wide')
 
         ###### WINDOW RULES ######
-        # Vesktop
-        # self.river_ctl('rule-add', '-')
+        self.river_ctl('rule-add', '-app-id', 'mpv', 'output', 'Microstep MSI G24C6 0x00000243')
+        self.riverctl('rule-add', '-title', 'Vesktop', 'output', 'Microstep MSI MAG161V AA1H010800607')
 
 
 if __name__ == '__main__':
