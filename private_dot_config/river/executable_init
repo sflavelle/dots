@@ -223,10 +223,10 @@ class RiverConfig:
 #            "waybar",
             "$HOME/.config/river/status",
             "$HOME/.config/river/bar",
+            "$HOME/.config/river/bgset",
             "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XAUTHORITY",
             "sway-audio-idle-inhibit",
             "kanshi",
-            "swaybg -m fill -i '$(find ~/Pictures/Wallpapers -iname \*.png -not -iname \.* | shuf -n 1)'",
             # Programs
             "vesktop",
             "steam",
