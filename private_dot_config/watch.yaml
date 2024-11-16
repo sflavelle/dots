@@ -137,6 +137,9 @@ Metal Gear Scanlon:
 "raocow: Super Mario Galaxy":
   url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDKpx2i6rOgFM_RYJke6L8Li
   remember_progress: true
+"raocow: Super Mario Galaxy 2":
+  url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDJ6CxWsN_gQb3EQoweE7XX2
+  remember_progress: true
 "raocow: Celeste":
   url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDLuPoeFgmN_vWNIm74dhOJG
   remember_progress: true
@@ -173,3 +176,10 @@ Relaxation Ambience:
 LVoid's Deltarune Memes:
   url: https://youtube.com/playlist?list=PLUDzLrZN3WiTX9F7m7mjEyn8W8V-b7P2x
   shuffle: true
+"raocow: Cave Story":
+  url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDIhV-m1MWqo2P_VH6DxIHvL
+  remember_progress: true
+"raocow: Here Comes Niko!":
+  url: https://www.youtube.com/playlist?list=PLQhrpbbm5TDJ-2rgdAuTygvnDU2mIG-pU
+  remember_progress: true
+"LarsTM: Speedrunning Wampus 1-8, Tompus 1-2, Deep Dip 1-2": https://www.youtube.com/watch?v=pqgWgIbC00Q
