@@ -1,7 +1,0 @@
-#!/bin/bash
-
-sudo pacman -Syu
-
-sudo pacman -S {{ range .packages.arch.pacman -}}{{ . }} {{ end -}}
-
-yay -S {{ range .packages.arch.aur -}}{{ . }} {{ end -}}

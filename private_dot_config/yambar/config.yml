@@ -1,0 +1,95 @@
+font_main: &proggy ProggyCleanSZ Nerd Font Mono:pixelsize=16
+font_focus: &proggybold ProggyCleanSZ Nerd Font Mono:pixelsize=16:weight=bold
+bg_default: &bg_default #00000099
+fg_dimmed: &fg_dim 787878ff
+bar:
+  height: 26
+  location: top
+  monitor: '*'
+  background: 00000099
+  font: *proggy
+  margin: 8
+
+  right:
+   - pipewire:
+       anchors:
+         volume: &volume
+           conditions:
+             muted: {string: {text: "{linear_volume}%", foreground: ff0000ff}}
+             ~muted: {string: {text: "{linear_volume}%"}}
+       content:
+         list:
+           items:
+             - map:
+                 conditions:
+                   type == "sink":
+                     map:
+                       conditions:
+                         icon == "audio-headset-bluetooth":
+                           string: {text: "🎧  "}
+                       default:
+                         - ramp:
+                             tag: linear_volume
+                             items:
+                               - string: {text: "🔈  "}
+                               - string: {text: "🔉  "}
+                               - string: {text: "🔊  "}
+                   type == "source":
+                     - string: {text: "🎙  "}
+             - map:
+                 <<: *volume
+   - clock:
+        time-format: "%H:%M %Z"
+        content:
+          - string: {text: "󰃭"}
+          - string: {text: "{date}",right-margin: 5}
+          - string: {text: ""}
+          - string: {text: "{time}"}
+  center:
+    - mpd:
+        host: "10.0.0.69"
+        port: 6600
+        content:
+          - string:
+              text: "{title} ({artist}, '{album}')"
+  left:
+    - river:
+        anchors:
+          - base: &river_base
+              margin: 4
+              default:
+                string:
+                  text: "{id}"
+                  font: *proggy
+        title: 
+          string:
+            left-margin: 12
+            text: "{title} ({layout}/{mode})"
+        content:
+            map:
+              on-click: 
+                left: sh -c "riverctl set-focused-tags $((1 << ({id} - 1)))"
+                right: sh -c "riverctl toggle-focused-tags $((1 << ({id} -1)))"
+                middle: sh -c "riverctl toggle-view-tags $((1 << ({id} -1)))"
+              default:
+                string: 
+                  margin: 4
+                  text: "{id}"
+              conditions:
+                id > 9: {empty: {}}
+                ~occupied && state == focused:
+                  string:
+                    text: "[{id}]"
+                    foreground: *fg_dim
+                    margin: 4
+                ~occupied:
+                  string:
+                    text: "{id}"
+                    foreground: *fg_dim
+                    margin: 4
+                state == focused:
+                  string: 
+                    text: "[{id}]"
+                    font: *proggybold
+                    margin: 4
+                    on-click:
