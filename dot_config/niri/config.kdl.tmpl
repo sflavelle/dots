@@ -1,8 +1,13 @@
+{{- $niri_dir := joinPath .chezmoi.sourceDir "dot_config/niri" }}
 include "core.kdl"
 include "binds.kdl"
+{{ if stat (joinPath $niri_dir (printf "%s.kdl" .chezmoi.hostname) ) }}
 include "{{ .chezmoi.hostname }}.kdl" // host specific
+{{ end }}
 include "rules-common.kdl"
+{{ if stat (joinPath $niri_dir (printf "rules-%s.kdl" .chezmoi.hostname) ) }}
 include "rules-{{ .chezmoi.hostname }}.kdl"
+{{ end }}
 
 spawn-at-startup "python3" "/home/lily/.config/niri/dynamic-open-float.py"
 spawn-at-startup "swayidle"
