@@ -1,0 +1,69 @@
+input {
+    touch { map-to-output "HDMI-A-1"; }
+}
+
+gestures {
+    hot-corners { 
+        off 
+    }
+}
+
+output "DP-1" {
+    scale 1.000000
+    transform "normal"
+    position x=0 y=320
+    mode "1920x1080"
+}
+output "DP-2" {
+    scale 1.000000
+    focus-at-startup
+    transform "normal"
+    position x=1920 y=0
+    mode "3440x1440"
+    variable-refresh-rate
+
+    hot-corners {
+        top-left
+        top-right
+    }
+
+    layout {
+        default-column-width { proportion 0.25; }
+        preset-column-widths {
+            proportion 0.25
+            proportion 0.33334
+            proportion 0.5
+            proportion 0.66667
+            proportion 0.75
+        }
+    }
+}
+output "HDMI-A-1" {
+    scale 1.00
+    transform "normal"
+    position x=2780 y=1440
+    mode "1920x720"
+}
+output "HDMI-A-2" {
+    scale 1.000000
+    transform "normal"
+    position x=5360 y=320
+    mode "1920x1080@60"
+}
+
+workspace "Utility" { open-on-output "HDMI-A-1"; }
+workspace "Archipelago" { open-on-output "HDMI-A-1"; }
+workspace "OBS" { open-on-output "HDMI-A-1"; }
+workspace "Browser (alt)" { open-on-output "DP-1"; }
+workspace "Video" { open-on-output "DP-1"; }
+workspace "Browser" { open-on-output "DP-2"; }
+workspace "Work" { open-on-output "DP-2"; }
+workspace "Games" { open-on-output "DP-2"; }
+workspace "Code" { open-on-output "DP-2"; }
+workspace "Audio" { open-on-output "DP-2"; }
+workspace "Communication" { open-on-output "HDMI-A-2"; }
+
+spawn-at-startup "steam"
+spawn-at-startup "vesktop"
+spawn-at-startup "curl" "-X" "POST" "-d" "state=active" "http://10.0.10.1:8123/api/webhook/-AK5XwN-bt0AT_msCC4KAYOMv"
+spawn-sh-at-startup "linux2mqtt --host 10.0.10.4 --username splatsune --password M33p... --cpu=60 --vm --du='/' --du='/mnt/games' --du='/home' --net='eno1,30' --temp"

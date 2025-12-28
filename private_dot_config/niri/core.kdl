@@ -1,0 +1,145 @@
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+prefer-no-csd
+
+overview { workspace-shadow { off; }; }
+
+switch-events { lid-close { spawn "systemctl" "suspend"; }; }
+
+// spawn-at-startup "waybar"
+// spawn-at-startup "mako"
+// spawn-at-startup "cosmic-osd"
+// spawn-at-startup "swww-daemon"
+// spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "mpd-mpris" "-host" "pods"
+spawn-at-startup "udiskie"
+
+input {
+    keyboard {
+        xkb {
+            layout ""
+            model ""
+            rules ""
+            variant ""
+        }
+        repeat-delay 600
+        repeat-rate 25
+        track-layout "global"
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+    mouse { scroll-factor 1.0000; }
+    focus-follows-mouse max-scroll-amount="20%"
+    disable-power-key-handling
+}
+
+layout {
+    gaps 8
+
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+
+    focus-ring { off; }
+
+    border {
+        on
+        width 2
+
+        active-color "#67d3ff"
+        inactive-color "#003546"
+
+        urgent-color "rgb(255 0 0)"
+    }
+
+    background-color "transparent"
+
+    shadow {
+        on
+        offset x=0.000000 y=5.000000
+        softness 30
+        spread 5
+        draw-behind-window true
+        color "#00000070"
+    }
+
+    tab-indicator {
+        hide-when-single-tab
+        place-within-column
+        gap 5
+        width 4
+        length total-proportion=1.000000
+        position "right"
+        gaps-between-tabs 2
+        corner-radius 0.000000
+        active-color "red"
+        inactive-color "gray"
+    }
+
+    default-column-width { proportion 0.333333; }
+    preset-column-widths {
+        proportion 0.333333
+        proportion 0.500000
+        proportion 0.666667
+    }
+    center-focused-column "never"
+}
+
+cursor {
+    xcursor-theme "Posy_Cursor"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 3000
+}
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+recent-windows {
+    // off
+    debounce-ms 750
+
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 0
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab         { next-window; }
+        Alt+Shift+Tab   { previous-window; }
+        Alt+grave       { next-window     filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+        Mod+grave       { next-window     filter="app-id"; }
+        Mod+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+xwayland-satellite { path "/usr/bin/xwayland-satellite"; }
+
+environment {
+    "ELECTRON_DISABLE_GPU" "1"
+    "ELECTRON_OZONE_PLATFORM_HINT" "wayland"
+    "MOZ_ENABLE_WAYLAND" "1"
+    "MOZ_WEBRENDER" "1"
+    "QT_QPA_PLATFORM" "wayland"
+}
+

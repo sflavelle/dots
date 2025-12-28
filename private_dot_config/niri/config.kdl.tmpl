@@ -1,0 +1,11 @@
+include "core.kdl"
+include "binds.kdl"
+include "{{ .chezmoi.hostname }}.kdl" // host specific
+include "rules-common.kdl"
+include "rules-{{ .chezmoi.hostname }}.kdl"
+
+spawn-at-startup "python3" "/home/lily/.config/niri/dynamic-open-float.py"
+spawn-at-startup "swayidle"
+
+
+include "./noctalia.kdl"

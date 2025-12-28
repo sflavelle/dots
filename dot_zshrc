@@ -9,6 +9,11 @@ compinit
 zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1
 
+source ~/.zplug/init.zsh
+# zplug "multirious/zsh-helix-mode", depth:1, at:main
+
+zplug load
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /etc/profile
 eval "$(oh-my-posh init zsh --config ~/.config/posh.yaml)"
@@ -20,7 +25,7 @@ function beet-dlp() {
     pushd /tmp/beet-dlp-$UID
 	for item in $@
 	do
-    yt-dlp -x --audio-format=mp3 \
+    yt-dlp --ignore-config -t mp3 \
     -o "%(album_artist,artist,uploader)s - %(album,playlist|Misc)s/%(playlist_index,track_number,autonumber)02d - %(title)s.%(ext)s" \
     --embed-metadata \
     $item
@@ -46,8 +51,7 @@ export SAVEHIST=1000000000
 # Variables
 export EDITOR=helix
 export IWADS=$HOME/Games/DOOM/IWADs
-export DOTSDIR=$HOME/Documents/Projects/dotfiles
-export MPD_HOST=10.0.0.69
+export MPD_HOST=10.0.10.2
 
 edit() { $EDITOR $1 }
 config() { $EDITOR $HOME/.config/$1 }
@@ -61,8 +65,9 @@ export XDG_STATE_HOME=$HOME/.local/state
 # Aliases
 alias ls='eza --icons=auto'
 alias ll='eza --icons=auto -l'
-alias vi='nvim'
-alias vim='nvim'
+alias vi='$EDITOR'
+alias vim='$EDITOR'
+alias dl='wget --content-disposition'
 
 # Keybinds
 # create a zkbd compatible hash;
@@ -106,15 +111,19 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
+#zhm-add-update-region-highlight-hook
+
 # Extra keybinds
 source /usr/share/fzf/key-bindings.zsh
+#zhm_wrap_widget fzf-completion zhm_fzf_completion
+#bindkey '^I' zhm_fzf_completion
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/lily/.config/.dart-cli-completion/zsh-config.zsh ]] && . /home/lily/.config/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
 
 
-# init ZPM and plugins
-if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
-fi
-source ~/.zpm/zpm.zsh
-
-zpm load zpm-zsh/colors
-zpm load dim-an/cod
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

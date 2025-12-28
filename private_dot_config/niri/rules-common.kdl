@@ -1,0 +1,134 @@
+window-rule {
+    match app-id="^steam$"
+    match app-id="heroic"
+    match app-id="^love$" title="Olympus"
+    match app-id="lutris"
+    open-on-workspace "Games"
+}
+window-rule {
+    match app-id="^steam_app_"
+    match app-id="gzdoom"
+    match app-id="SpaceIdle"
+    match title="Ship of Harkinian"
+    match app-id="Celeste"
+    match app-id="gmod"
+    match app-id="SMB1R"
+    match app-id="hollow_knight"
+    match app-id="hitman3"
+    match app-id="sm64coopdx"
+    default-column-width { fixed 2468; }
+    open-on-workspace "Games"
+    open-floating false
+    variable-refresh-rate true
+}
+
+window-rule {
+    match title="^Lovely" app-id="^steam_app_"
+    default-column-width { fixed 480; }
+}
+
+window-rule {
+    match app-id="^yazi$"
+    default-column-width { fixed 1200; }
+}
+
+window-rule {
+    match app-id="EverestSplash"
+    open-on-workspace "Games"
+}
+
+window-rule {
+    match app-id="com.bitwig.BitwigStudio"
+    open-on-workspace "Audio"
+    open-maximized-to-edges true
+}
+
+window-rule {
+    match app-id="hydrus" title="client media viewer"
+    default-column-width { proportion 0.75; }
+}
+
+window-rule {
+    match app-id="ArchipelagoLauncher"
+    match app-id="HydraTextClient"
+    open-on-workspace "Archipelago"
+    open-focused true
+}
+window-rule {
+    match app-id="com.obsproject.Studio" is-floating=false
+    open-on-workspace "OBS"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="discord"
+    match app-id="WebCord"
+    match app-id="vesktop"
+    match app-id="element"
+    open-on-workspace "Communication"
+    default-column-width { proportion 0.667; }
+}
+window-rule {
+    match app-id="vlc"
+    match app-id="mpv"
+    match app-id="obs-studio"
+    match app-id="jellyfin"
+    open-on-workspace "Video"
+    open-fullscreen true
+    open-focused true
+}
+
+window-rule {
+    match app-id="firefox" title="Picture-in-Picture"
+    match app-id="floorp" title="Picture-in-Picture"
+    match app-id="zen" title="Picture-in-Picture"
+    match title="Picture in picture"
+    default-column-width { proportion 0.145000; }
+    default-window-height { proportion 0.200000; }
+    open-on-output "DP-2"
+    open-floating true
+    default-floating-position relative-to="bottom-right" x=0 y=0
+}
+window-rule {
+    match title="gsr ui"
+    match app-id="com.dec05eba.gpu_screen_recorder"
+    open-on-output "DP-2"
+    open-floating true
+    open-maximized true
+    draw-border-with-background false
+    border { off; }
+    shadow { off; }
+    default-floating-position relative-to="top-left" x=0 y=0
+}
+window-rule {
+    match title="gsr notify"
+    open-on-output "DP-2"
+    open-floating true
+    open-focused false
+    draw-border-with-background false
+    border { off; }
+    shadow { off; }
+    default-floating-position relative-to="top-right" x=0 y=0
+}
+
+window-rule {
+    match app-id="resolve"
+    exclude title="DaVinci Resolve Studio"
+    open-floating true
+    default-floating-position relative-to="top" x=0 y=0
+}
+
+window-rule {
+    match app-id="resolve"
+    open-on-workspace "Work"
+}
+
+window-rule {
+    match at-startup=true
+    open-focused false
+}
+layer-rule {
+    match namespace="swww-daemon"
+    match namespace="noctalia-wallpaper"
+    place-within-backdrop true
+}

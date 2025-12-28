@@ -4,9 +4,9 @@ library: /home/lily/Music/library.db
 pluginpath: /home/lily/.config/beets/otherplugins
 plugins:
   - albumtypes
-  - bandcamp
+  # - bandcamp
   # - beatport
-  - discogs
+  # - discogs
   # - vgmdb
   - bucket
   - convert
@@ -148,12 +148,19 @@ importadded:
 lastfm:
   user: Splatsune
 
+lastgenre:
+  canonical: /home/lily/.config/beets/genres-tree.yaml
+  fallback: 'Needs Retagging'
+  whitelist: /home/lily/.config/beets/genres.txt
+#  prefer_specific: yes
+
 mpd:
   host: 10.0.0.69
   port: 6600
 
 replaygain:
-  backend: gstreamer
+  backend: ffmpeg
+  r128_targetlevel: 89
   auto: yes
 
 lyrics:

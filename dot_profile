@@ -1,0 +1,9 @@
+export PATH=$PATH:/.cargo/bin
+
+export DOOMWADS=$HOME/Games/DOOM/Wads
+export DOOMIWADS=$DOOMWADS/../IWADs
+
+export APDIR=$HOME/AP/Archipelago
+export APGAMES=$HOME/AP/Games
+
+export MANPAGER="bat -plman"

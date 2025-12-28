@@ -3,7 +3,7 @@ Description=Link screenshot folders for games into a central location
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/pwsh -NonInteractive /home/lily/Pictures/GameScreenshots/link-steam-screenshot-dirs.ps1
+ExecStart=/usr/bin/python3 /home/lily/Pictures/GameScreenshots/link-steam-screenshot-dirs.py
 
 [Install]
 WantedBy=default.target

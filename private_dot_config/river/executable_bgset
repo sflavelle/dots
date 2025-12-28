@@ -1,4 +1,0 @@
-#!/bin/bash
-WALL=$(find $HOME/Pictures/Wallpapers -iname "*.png" -not -iname ".*" | shuf -n 1)
-
-swaybg -m fill -i "$WALL"
