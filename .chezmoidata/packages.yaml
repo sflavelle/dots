@@ -1,13 +1,14 @@
 packages:
   arch:
     pacman:
-      - river
-      - waybar
-      - kanshi
-      - thunar
       - zsh
+      - zsh-syntax-highlighting
       - mpv
       - python
+      - rbw
+      - fzf
+      - duf
+      - dust
+      - eza
     aur:
-      - swaysome
-      - wideriver
+      - noctalia-shell
