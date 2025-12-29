@@ -12,3 +12,4 @@ packages:
       - eza
     aur:
       - noctalia-shell
+      - oh-my-posh
