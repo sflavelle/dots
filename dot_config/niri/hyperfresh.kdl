@@ -33,3 +33,8 @@ workspace "Browser" { }
 workspace "Communication" { }
 workspace "Work" { }
 workspace "Games" { }
+
+binds {
+    Mod+Shift+3 { screenshot-screen; }
+    Mod+Shift+4 { screenshot-window; }
+}
