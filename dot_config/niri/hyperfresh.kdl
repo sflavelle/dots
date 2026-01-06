@@ -35,6 +35,8 @@ workspace "Work" { }
 workspace "Games" { }
 
 binds {
-    Mod+Shift+3 { screenshot-screen; }
-    Mod+Shift+4 { screenshot-window; }
+    Mod+Shift+Space { screenshot-screen; }
+    Mod+Alt+Space { screenshot-window; }
+
+    XF86LaunchA { toggle-overview; }
 }
