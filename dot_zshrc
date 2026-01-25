@@ -27,6 +27,7 @@ function beet-dlp() {
 	do
     yt-dlp --ignore-config -t mp3 \
     -o "%(album_artist,artist,uploader)s - %(album,playlist|Misc)s/%(playlist_index,track_number,autonumber)02d - %(title)s.%(ext)s" \
+    --cookies "$HOME/Downloads/www.youtube.com_cookies.txt" \
     --embed-metadata \
     $item
 	done

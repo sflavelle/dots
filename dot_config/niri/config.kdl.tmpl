@@ -12,5 +12,5 @@ include "rules-{{ .chezmoi.hostname }}.kdl"
 spawn-at-startup "python3" "/home/lily/.config/niri/dynamic-open-float.py"
 spawn-at-startup "swayidle"
 
-
+include "./noctalia-setup.kdl"
 include "./noctalia.kdl"
