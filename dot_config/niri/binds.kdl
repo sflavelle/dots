@@ -11,6 +11,7 @@ binds {
     // Mod+Grave hotkey-overlay-title="PulseAudio Volume Control" { spawn "pavucontrol"; }
     Mod+Space hotkey-overlay-title="Launcher" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
     Mod+Comma { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Mod+Return hotkey-overlay-title="Scratchpad" { spawn "ghostty" "--class=scratch" "-e" "helix" "+new-window"; }
 
     Mod+M hotkey-overlay-title="Music Player Daemon client" { spawn "ghostty" "--class=rmpc" "-e" "rmpc" "+new-window"; }
     Mod+Shift+M hotkey-overlay-title="Jellyfin-TUI client" { spawn "ghostty" "--class=jellyfin-tui" "-e" "jellyfin-tui" "+new-window"; }

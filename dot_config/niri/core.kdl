@@ -13,6 +13,7 @@ switch-events { lid-close { spawn "systemctl" "suspend"; }; }
 // spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "mpd-mpris" "-host" "pods"
 spawn-at-startup "udiskie"
+spawn-at-startup "localsend"
 
 input {
     keyboard {
