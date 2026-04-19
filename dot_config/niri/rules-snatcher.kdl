@@ -3,3 +3,15 @@ window-rule {
 	open-on-workspace "Utility"
 	open-maximized-to-edges true
 }
+window-rule {
+	match app-id="localsend"
+	match app-id="org.kde.kdeconnect.app"
+	match app-id="piipeweaver"
+	open-on-workspace "Utility"
+}
+
+window-rule {
+	match app-id="music-assistant-companion"
+	open-on-workspace "Music"
+	open-maximized-to-edges true
+}

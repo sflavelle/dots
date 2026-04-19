@@ -10,10 +10,12 @@ switch-events { lid-close { spawn "systemctl" "suspend"; }; }
 // spawn-at-startup "mako"
 // spawn-at-startup "cosmic-osd"
 // spawn-at-startup "swww-daemon"
-// spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+// spawn-at-startup "dms" "run"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "mpd-mpris" "-host" "pods"
 spawn-at-startup "udiskie"
 spawn-at-startup "localsend"
+// spawn-at-startup "qs" "-c" "noctalia-shell"
 
 input {
     keyboard {
@@ -138,9 +140,12 @@ xwayland-satellite { path "/usr/bin/xwayland-satellite"; }
 
 environment {
     "ELECTRON_DISABLE_GPU" "1"
-    "ELECTRON_OZONE_PLATFORM_HINT" "wayland"
     "MOZ_ENABLE_WAYLAND" "1"
     "MOZ_WEBRENDER" "1"
     "QT_QPA_PLATFORM" "wayland"
+  XDG_CURRENT_DESKTOP "niri"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  QT_QPA_PLATFORMTHEME "gtk3"
+  QT_QPA_PLATFORMTHEME_QT6 "gtk3"
 }
 

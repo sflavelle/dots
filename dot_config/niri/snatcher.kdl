@@ -52,6 +52,7 @@ output "HDMI-A-2" {
 }
 
 workspace "Utility" { open-on-output "HDMI-A-1"; }
+workspace "Music" { open-on-output "HDMI-A-1"; }
 workspace "Archipelago" { open-on-output "HDMI-A-1"; }
 workspace "OBS" { open-on-output "HDMI-A-1"; }
 workspace "Browser (alt)" { open-on-output "DP-1"; }
@@ -63,7 +64,14 @@ workspace "Code" { open-on-output "DP-2"; }
 workspace "Audio" { open-on-output "DP-2"; }
 workspace "Communication" { open-on-output "HDMI-A-2"; }
 
+environment {
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    XDG_MENU_PREFIX "arch-"
+}
+
 spawn-at-startup "steam"
 spawn-at-startup "vesktop"
+spawn-at-startup "fluxer"
 spawn-at-startup "curl" "-X" "POST" "-d" "state=active" "http://10.0.10.1:8123/api/webhook/-AK5XwN-bt0AT_msCC4KAYOMv"
 spawn-sh-at-startup "linux2mqtt --host 10.0.10.4 --username splatsune --password M33p... --cpu=60 --vm --du='/' --du='/mnt/games' --du='/home' --net='eno1,30' --temp"
+spawn-sh-at-startup "socat -v TCP-LISTEN:6655,reuseaddr,fork UNIX-CONNECT:/run/user/1000/discord-ipc-0"

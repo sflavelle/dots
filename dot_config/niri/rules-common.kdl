@@ -8,6 +8,7 @@ window-rule {
 window-rule {
     match app-id="^steam_app_"
     match app-id="gzdoom"
+    match app-id="uzdoom"
     match app-id="SpaceIdle"
     match title="Ship of Harkinian"
     match app-id="Celeste"
@@ -17,10 +18,29 @@ window-rule {
     match app-id="hitman3"
     match app-id="sm64coopdx"
     match app-id="Refunct-Linux-Shipping"
+    match app-id="gamescope"
+    match app-id="Minecraft"
     default-column-width { fixed 2468; }
     open-on-workspace "Games"
+    open-focused true
     open-floating false
     variable-refresh-rate true
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    draw-border-with-background false
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
 }
 
 window-rule {
@@ -66,6 +86,7 @@ window-rule {
     match app-id="WebCord"
     match app-id="vesktop"
     match app-id="element"
+    match app-id="fluxer"
     open-on-workspace "Communication"
     default-column-width { proportion 0.667; }
 }
@@ -132,4 +153,33 @@ layer-rule {
     match namespace="swww-daemon"
     match namespace="noctalia-wallpaper"
     place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="dms:blurwallpaper"
+    place-within-backdrop true
+}
+
+
+// Open DMS windows as floating by default
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
+}
+
+layer-rule {
+    match namespace="dms:bar"
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="com.system76.CosmicFilesDialog"
+    open-floating true
 }
