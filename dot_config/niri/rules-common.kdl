@@ -20,6 +20,7 @@ window-rule {
     match app-id="Refunct-Linux-Shipping"
     match app-id="gamescope"
     match app-id="Minecraft"
+    match app-id="mcpelauncher-client"
     default-column-width { fixed 2468; }
     open-on-workspace "Games"
     open-focused true
@@ -173,9 +174,19 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="dms:bar"
+    match namespace="^dms:clipboard$"
+
+    block-out-from "screencast"
+}
+
+layer-rule {
+    // match layer="top"
+    match layer="overlay"
+    match namespace=r#"^dms:.*"#
+    exclude namespace="dms:bar"
+
     background-effect {
-        blur true
+        xray false
     }
 }
 
