@@ -12,6 +12,7 @@ window-rule {
 
 window-rule {
 	match app-id="music-assistant-companion"
+	match app-id="feishin"
 	open-on-workspace "Music"
 	open-maximized-to-edges true
 }

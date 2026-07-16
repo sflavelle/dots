@@ -1,5 +1,5 @@
 input {
-    touch { map-to-output "HDMI-A-1"; }
+    touch { map-to-output "Graphica Computer HD Display Unknown"; }
 }
 
 gestures {
@@ -8,13 +8,13 @@ gestures {
     }
 }
 
-output "DP-1" {
+output "Philips Consumer Electronics Company PHL 216V6 ZV01929011836" {
     scale 1.000000
     transform "normal"
     position x=0 y=320
     mode "1920x1080"
 }
-output "DP-2" {
+output "KOGAN AUSTRALIA PTY LTD KAMN34RQUCSA Unknown" {
     scale 1.000000
     focus-at-startup
     transform "normal"
@@ -38,34 +38,33 @@ output "DP-2" {
         }
     }
 }
-output "HDMI-A-1" {
+output "Graphica Computer HD Display Unknown" {
     scale 1.00
     transform "normal"
     position x=2780 y=1440
     mode "1920x720"
 }
-output "HDMI-A-2" {
+output "Microstep MSI G24C6 0x00000243" {
     scale 1.000000
     transform "normal"
     position x=5360 y=320
     mode "1920x1080@60"
 }
 
-workspace "Utility" { open-on-output "HDMI-A-1"; }
-workspace "Music" { open-on-output "HDMI-A-1"; }
-workspace "Archipelago" { open-on-output "HDMI-A-1"; }
-workspace "OBS" { open-on-output "HDMI-A-1"; }
-workspace "Browser (alt)" { open-on-output "DP-1"; }
-workspace "Video" { open-on-output "DP-1"; }
-workspace "Browser" { open-on-output "DP-2"; }
-workspace "Work" { open-on-output "DP-2"; }
-workspace "Games" { open-on-output "DP-2"; }
-workspace "Code" { open-on-output "DP-2"; }
-workspace "Audio" { open-on-output "DP-2"; }
-workspace "Communication" { open-on-output "HDMI-A-2"; }
+workspace "Utility" { open-on-output "Graphica Computer HD Display Unknown"; }
+workspace "Music" { open-on-output "Graphica Computer HD Display Unknown"; }
+workspace "Archipelago" { open-on-output "Graphica Computer HD Display Unknown"; }
+workspace "OBS" { open-on-output "Graphica Computer HD Display Unknown"; }
+workspace "Browser (alt)" { open-on-output "Philips Consumer Electronics Company PHL 216V6 ZV01929011836"; }
+workspace "Video" { open-on-output "Philips Consumer Electronics Company PHL 216V6 ZV01929011836"; }
+workspace "Browser" { open-on-output "KOGAN AUSTRALIA PTY LTD KAMN34RQUCSA Unknown"; }
+workspace "Work" { open-on-output "KOGAN AUSTRALIA PTY LTD KAMN34RQUCSA Unknown"; }
+workspace "Games" { open-on-output "KOGAN AUSTRALIA PTY LTD KAMN34RQUCSA Unknown"; }
+workspace "Code" { open-on-output "KOGAN AUSTRALIA PTY LTD KAMN34RQUCSA Unknown"; }
+workspace "Audio" { open-on-output "KOGAN AUSTRALIA PTY LTD KAMN34RQUCSA Unknown"; }
+workspace "Communication" { open-on-output "Microstep MSI G24C6 0x00000243"; }
 
 environment {
-    QT_QPA_PLATFORMTHEME "qt6ct"
     XDG_MENU_PREFIX "arch-"
 }
 
@@ -73,5 +72,5 @@ spawn-at-startup "steam"
 spawn-at-startup "vesktop"
 spawn-at-startup "fluxer"
 spawn-at-startup "curl" "-X" "POST" "-d" "state=active" "http://10.0.10.1:8123/api/webhook/-AK5XwN-bt0AT_msCC4KAYOMv"
-spawn-sh-at-startup "linux2mqtt --host 10.0.10.4 --username splatsune --password M33p... --cpu=60 --vm --du='/' --du='/mnt/games' --du='/home' --net='eno1,30' --temp"
+spawn-sh-at-startup "linux2mqtt --host 10.0.10.4 --username splatsune --password M33p... --cpu=20 --vm --du='/' --du='/mnt/games' --du='/home' --du='/mnt/misc' --net='eno1,30' --temp --fan"
 spawn-sh-at-startup "socat -v TCP-LISTEN:6655,reuseaddr,fork UNIX-CONNECT:/run/user/1000/discord-ipc-0"

@@ -2,24 +2,27 @@ binds {
 
     // Launchers
 
-    Mod+B hotkey-overlay-title="Browser" { spawn "zen-browser"; }
-    // Mod+B hotkey-overlay-title="Browser" { spawn "vivaldi-stable"; }
-    Mod+Shift+E hotkey-overlay-title=" File Manager (Dolphin)" { spawn "dolphin"; }
-    Mod+E hotkey-overlay-title="File Manager (Yazi)" { spawn "ghostty" "--class=yazi" "-e" "yazi" "+new-window"; }
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty" "+new-window"; }
-    Mod+Shift+T hotkey-overlay-title="Open Terminal" { spawn "ghostty" "--class=nushell" "-e" "nu" "+new-window"; }
-    Mod+Escape hotkey-overlay-title="System Monitor" { spawn "ghostty" "--class=btop" "-e" "btop" "+new-window"; }
-    // Mod+Grave hotkey-overlay-title="PulseAudio Volume Control" { spawn "pavucontrol"; }
+    Mod+Shift+B hotkey-overlay-title="Browser" { spawn "helium-browser"; }
+    // Mod+B hotkey-overlay-title="Browser" { spawn "zen-browser"; }
+    Mod+B hotkey-overlay-title="Browser" { spawn "vivaldi-stable"; }
+    // Mod+Shift+E hotkey-overlay-title=" File Manager (Dolphin)" { spawn "dolphin"; }
+    Mod+Shift+E hotkey-overlay-title=" File Manager (Nautilus)" { spawn "nautilus"; }
+    Mod+E hotkey-overlay-title="File Manager (Yazi)" { spawn "alacritty" "--class=yazi" "-e" "yazi"; }
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
+    Mod+Shift+T hotkey-overlay-title="Open Terminal" { spawn "alacritty" "--class=nushell" "-e" "nu"; }
+    Mod+Escape hotkey-overlay-title="System Monitor" { spawn "alacritty" "--class=btop" "-e" "btop"; }
+    Mod+Grave hotkey-overlay-title="PulseAudio Volume Control" { spawn "pavucontrol"; }
     Mod+Space hotkey-overlay-title="Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    // Mod+Space hotkey-overlay-title="Launcher" { spawn "fuzzel"; }
     Mod+Comma { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
     Mod+Backspace hotkey-overlay-title="Notification Center" {
         spawn "dms" "ipc" "call" "notifications" "toggle";
     }
-    Mod+Return hotkey-overlay-title="Scratchpad" { spawn "ghostty" "--class=scratch" "-e" "helix" "+new-window"; }
+    Mod+Return hotkey-overlay-title="Scratchpad" { spawn "alacritty" "--class=scratch" "-e" "helix"; }
     Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle";}
     
     Mod+M hotkey-overlay-title="Music Assistant client" { spawn "music-assistant-companion"; }
-    Mod+Shift+M hotkey-overlay-title="Jellyfin-TUI client" { spawn "ghostty" "--class=jellyfin-tui" "-e" "jellyfin-tui" "+new-window"; }
+    Mod+Shift+M hotkey-overlay-title="Jellyfin-TUI client" { spawn "alacritty" "--class=jellyfin-tui" "-e" "jellyfin-tui"; }
 
     // Workspaces
 
@@ -109,6 +112,7 @@ binds {
 
     // Misc
 
+    // Ctrl+Alt+Delete hotkey-overlay-title="Power Menu" { spawn "wleave"; }
     Ctrl+Alt+Delete hotkey-overlay-title="Power Menu" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
     Mod+L { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
     Mod+F4 { quit; }

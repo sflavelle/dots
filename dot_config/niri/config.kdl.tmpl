@@ -1,3 +1,4 @@
+include "./colors.kdl"
 {{- $niri_dir := joinPath .chezmoi.sourceDir "dot_config/niri" }}
 include "core.kdl"
 include "binds.kdl"
@@ -12,8 +13,15 @@ include "rules-{{ .chezmoi.hostname }}.kdl"
 spawn-at-startup "python3" "/home/lily/.config/niri/dynamic-open-float.py"
 spawn-at-startup "swayidle"
 
-include "dms/colors.kdl"
-include "dms/cursor.kdl"
-include "dms/layout.kdl"
-include "dms/alttab.kdl"
-include "dms/binds.kdl"
+{{ if stat (joinPath .chezmoi.homeDir ".config/niri/dms") }}
+{{- $dms_niri := joinPath .chezmoi.homeDir ".config/niri/dms" }}
+include optional=true "dms/alttab.kdl"
+include optional=true "dms/binds.kdl"
+include optional=true "dms/colors.kdl"
+include optional=true "dms/cursor.kdl"
+include optional=true "dms/layout.kdl"
+include optional=true "dms/outputs.kdl"
+include optional=true "dms/windowrules.kdl"
+include optional=true "dms/wpblur.kdl"
+// include optional=true "dms-theme-sync.kdl"
+{{ end }}

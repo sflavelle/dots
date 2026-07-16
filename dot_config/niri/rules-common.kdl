@@ -21,20 +21,44 @@ window-rule {
     match app-id="gamescope"
     match app-id="Minecraft"
     match app-id="mcpelauncher-client"
+    match app-id="p2ce"
+    match app-id="^Haste.x86_64$"
+    match app-id="^dusk$"
+    match app-id="^com.twilitrealm.dusk"
+    match app-id="MarbleItUp"
     default-column-width { fixed 2468; }
     open-on-workspace "Games"
     open-focused true
     open-floating false
+    open-fullscreen true
     variable-refresh-rate true
 }
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     match app-id="Alacritty"
-    match app-id="zen"
     match app-id="com.mitchellh.ghostty"
     match app-id="kitty"
     draw-border-with-background false
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="zen"
+    match app-id="vesktop"
+    match app-id="^code$"
+    draw-border-with-background false
+    background-effect {
+        blur true
+    }
+    popups {
+        opacity 0.7
+        background-effect {
+            blur true
+        }
+    }
 }
 
 window-rule {
@@ -152,16 +176,9 @@ window-rule {
 }
 layer-rule {
     match namespace="swww-daemon"
+    match namespace="awww-daemon"
     match namespace="noctalia-wallpaper"
-    place-within-backdrop true
-}
-
-layer-rule {
     match namespace="^quickshell$"
-    place-within-backdrop true
-}
-
-layer-rule {
     match namespace="dms:blurwallpaper"
     place-within-backdrop true
 }
